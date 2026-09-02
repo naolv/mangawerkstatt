@@ -47,10 +47,11 @@ clearBtn.addEventListener('click', () => {
 });
 
 // Funktion zum Laden grauer Vorlagen
-function loadTemplate(templateSrc) {
+// Funktion zum Laden von Internet-Vorlagen
+function loadTemplate(imageUrl) {
   const img = new Image();
-  // Pfad zu den Vorlagen-Bildern im 'assets'-Ordner
-  img.src = 'assets/' + templateSrc; 
+  img.crossOrigin = "Anonymous"; // Erlaubt das Laden externer Bilder
+  img.src = imageUrl; 
   img.onload = function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.globalAlpha = 0.25; // Transparent/Blassgrau für Nachfahren

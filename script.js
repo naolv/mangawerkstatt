@@ -6,6 +6,8 @@ const clearBtn = document.getElementById('clearBtn');
 const downloadBtn = document.getElementById('downloadBtn');
 
 let isDrawing = false;
+let eyeIndex = 0;
+let faceIndex = 0;
 
 // Zeichen-Events
 canvas.addEventListener('mousedown', startDrawing);
@@ -55,42 +57,79 @@ downloadBtn.addEventListener('click', () => {
   link.click();
 });
 
-// Integrierte Hilfslinien (Keine externen Bilder mehr nötig!)
+// Integrierte Hilfslinien mit Wechsel-Funktion
 function drawGuide(type) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.strokeStyle = '#cccccc'; // Blassgrau zum Nachfahren
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 3;
 
   if (type === 'augen') {
-    // Links Auge
-    ctx.beginPath();
-    ctx.arc(200, 180, 40, 3.8, 5.8);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(200, 200, 25, 0, Math.PI * 2);
-    ctx.stroke();
+    eyeIndex = (eyeIndex + 1) % 4; // Schaltet durch 4 verschiedene Augen-Stile
 
-    // Rechts Auge
-    ctx.beginPath();
-    ctx.arc(400, 180, 40, 3.8, 5.8);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(400, 200, 25, 0, Math.PI * 2);
-    ctx.stroke();
+    if (eyeIndex === 1) {
+      // 1. Klassische Manga-Augen (Groß & Ausdrucksstark)
+      // Linkes Auge
+      ctx.beginPath(); ctx.ellipse(200, 200, 35, 55, 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(200, 200, 15, 30, 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(190, 180, 8, 0, Math.PI * 2); ctx.stroke(); // Glanzpunkt
+      // Rechtes Auge
+      ctx.beginPath(); ctx.ellipse(400, 200, 35, 55, 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(400, 200, 15, 30, 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(390, 180, 8, 0, Math.PI * 2); ctx.stroke(); // Glanzpunkt
+    } 
+    else if (eyeIndex === 2) {
+      // 2. Mutige / Entschlossene Augen (Katzenhaft / Spitz)
+      // Linkes Auge
+      ctx.beginPath(); ctx.moveTo(140, 210); ctx.lineTo(230, 170); ctx.lineTo(250, 210); ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(200, 200, 15, 25, 0, 0, Math.PI * 2); ctx.stroke();
+      // Rechtes Auge
+      ctx.beginPath(); ctx.moveTo(460, 210); ctx.lineTo(370, 170); ctx.lineTo(350, 210); ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(400, 200, 15, 25, 0, 0, Math.PI * 2); ctx.stroke();
+    } 
+    else if (eyeIndex === 3) {
+      // 3. Chibi / Niedliche Augen (Sehr rund & fröhlich)
+      // Linkes Auge
+      ctx.beginPath(); ctx.arc(200, 200, 45, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(185, 185, 12, 0, Math.PI * 2); ctx.stroke(); // Licht
+      ctx.beginPath(); ctx.arc(210, 215, 6, 0, Math.PI * 2); ctx.stroke();  // Licht 2
+      // Rechtes Auge
+      ctx.beginPath(); ctx.arc(400, 200, 45, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(385, 185, 12, 0, Math.PI * 2); ctx.stroke(); // Licht
+      ctx.beginPath(); ctx.arc(410, 215, 6, 0, Math.PI * 2); ctx.stroke();  // Licht 2
+    } 
+    else {
+      // 0. Sanfte / Traurige / Ruhige Augen (Sanfter Schwung)
+      // Linkes Auge
+      ctx.beginPath(); ctx.arc(200, 190, 45, 3.6, 5.7); ctx.stroke(); // Oberes Lid
+      ctx.beginPath(); ctx.ellipse(200, 210, 18, 25, 0, 0, Math.PI * 2); ctx.stroke();
+      // Rechtes Auge
+      ctx.beginPath(); ctx.arc(400, 190, 45, 3.6, 5.7); ctx.stroke(); // Oberes Lid
+      ctx.beginPath(); ctx.ellipse(400, 210, 18, 25, 0, 0, Math.PI * 2); ctx.stroke();
+    }
   } 
   else if (type === 'gesicht') {
-    // Gesichtsform
-    ctx.beginPath();
-    ctx.arc(300, 180, 100, 0, Math.PI);
-    ctx.lineTo(300, 320);
-    ctx.closePath();
-    ctx.stroke();
+    faceIndex = (faceIndex + 1) % 2;
 
-    // Hilfskreuz für Augen/Nase
-    ctx.beginPath();
-    ctx.moveTo(300, 80); ctx.lineTo(300, 320);
-    ctx.moveTo(200, 200); ctx.lineTo(400, 200);
-    ctx.stroke();
+    if (faceIndex === 1) {
+      // Spitzes Manga-Gesicht
+      ctx.beginPath();
+      ctx.moveTo(200, 150);
+      ctx.lineTo(210, 250);
+      ctx.lineTo(300, 320); // Kinn
+      ctx.lineTo(390, 250);
+      ctx.lineTo(400, 150);
+      ctx.arc(300, 150, 100, Math.PI, 0);
+      ctx.stroke();
+      // Hilfslinien
+      ctx.beginPath(); ctx.moveTo(300, 50); ctx.lineTo(300, 320); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(200, 200); ctx.lineTo(400, 200); ctx.stroke();
+    } else {
+      // Rundes Chibi-Gesicht
+      ctx.beginPath(); ctx.arc(300, 200, 110, 0, Math.PI * 2); ctx.stroke();
+      // Hilfslinien
+      ctx.beginPath(); ctx.moveTo(300, 90); ctx.lineTo(300, 310); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(190, 210); ctx.lineTo(410, 210); ctx.stroke();
+    }
   } 
   else if (type === 'steckbrief') {
     ctx.fillStyle = '#666666';
@@ -101,7 +140,7 @@ function drawGuide(type) {
     ctx.fillText('Haiku: _____________________', 30, 160);
     
     // Rahmen für das Bild
-    ctx.strokeRect(350, 40, 220, 300);
-    ctx.fillText('Zeichnung hier ->', 390, 200);
+    ctx.strokeRect(330, 30, 240, 330);
+    ctx.fillText('Zeichnung hier ->', 380, 190);
   }
 }

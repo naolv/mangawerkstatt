@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manga-Werkstatt</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>🎨 Die Manga-Werkstatt</h1>
+    <div class="haiku-box">
+      <p class="haiku">"Ein kleiner Gedanke,<br>
+      wird zum Helden auf dem Papier –<br>
+      Dein Manga beginnt."</p>
+    </div>
+    <p class="subtitle">Entdecke Manga-Zeichnen, entwirf deinen Charakter und werde zum Mangaka!</p>
+  </header>
+
+  <main class="container">
+
+    <section class="path-selection">
+      <h2>Wie möchtest du heute starten?</h2>
+      <div class="cards-grid">
+        <div class="card path-card">
+          <h3>📜 Weg 1: Mit Haiku</h3>
+          <p>Nutze dein Gedicht über deine Stärken und Wünsche als Bauplan für dein Charakterdesign.</p>
+        </div>
+        <div class="card path-card">
+          <h3>💡 Weg 2: Eigene Idee</h3>
+          <p>Starte frei mit eigenen Geschichten, Kräften, Hobbys oder Merkmalen im Kopf.</p>
+        </div>
+        <div class="card path-card">
+          <h3>✏️ Weg 3: Direkt Üben</h3>
+          <p>Springe sofort zu den Zeichen-Vorlagen und fahre deine ersten Manga-Linien nach.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="step-section">
+      <h2>Schritt 1: Welches Gefühl bekommt dein Held?</h2>
+      <p>Überlege vor der ersten Skizze, welche Persönlichkeit dein Charakter ausstrahlen soll:</p>
+      <ul>
+        <li><strong>Mutig & Feurig:</strong> Wilde, spitze Frisuren, ausdrucksstarker Blick.</li>
+        <li><strong>Sanft & Ruhig:</strong> Weiche, runde Augenformen, freundliches Lächeln.</li>
+        <li><strong>Schlau & Neugierig:</strong> Große, wache Augen, Brille oder Erkunder-Ausrüstung.</li>
+      </ul>
+
+      <div class="info-box knowledge">
+        💡 <strong>Manga-Wissen:</strong> Das Wort "Manga" (漫画) bedeutet übersetzt "spontanes Bild". Schon vor Hunderten von Jahren zeichneten japanische Dichter kleine Tuschebilder direkt neben ihre Haikus – das nannte man <em>Haiga</em>!
+      </div>
+    </section>
+
+    <section class="step-section">
+      <h2>Schritt 2: Gesichter & Ausdrücke üben</h2>
+      <p>Klicke auf eine Vorlage, um das Zeichen-Tool zu starten:</p>
+      
+      <div class="templates-grid">
+        <button class="btn-template" onclick="loadTemplate('augen_mutig.png')">👁️ Mutige Augen</button>
+        <button class="btn-template" onclick="loadTemplate('augen_sanft.png')">👀 Sanfte Augen</button>
+        <button class="btn-template" onclick="loadTemplate('haare.png')">💇 Dynamic Haare</button>
+      </div>
+
+      <div class="info-box tip">
+        ⭐ <strong>Pro-Tipp (Die 15-Minuten-Regel):</strong> Wärme deine Hand vor dem Zeichnen auf! Zeichne 10 große Kreise in die Luft. Lieber jeden Tag 15 Minuten üben als einmal im Monat stundenlang!
+      </div>
+    </section>
+
+    <section class="canvas-section" id="workshop">
+      <h2>🎨 Deine Digitale Zeichenwerkstatt</h2>
+      <p>Fahre die blassgraue Vorlage nach oder nutze das Feld für freie Skizzen:</p>
+      
+      <div class="canvas-container">
+        <canvas id="paintCanvas" width="600" height="400"></canvas>
+      </div>
+
+      <div class="controls">
+        <label>Farbe: <input type="color" id="colorPicker" value="#000000"></label>
+        <label>Stiftbreite: <input type="range" id="lineWidth" min="1" max="10" value="3"></label>
+        <button id="clearBtn">Clear / Löschen</button>
+      </div>
+
+      <div class="info-box tip">
+        ⭐ <strong>Der Papier-Trick:</strong> Kein Grafiktablet? Drehe die Display-Helligkeit hoch, lege ein normales Blatt Papier auf den Bildschirm und fahre die grau hinterlegten Linien mit Bleistift nach!
+      </div>
+    </section>
+
+    <section class="step-section">
+      <h2>Schritt 4: Hintergrund & Charakter-Steckbrief</h2>
+      <p>Erschaffe die Welt deines Helden (Perspektive, Speedlines) und lade dir deinen Steckbrief herunter.</p>
+      
+      <div class="info-box knowledge">
+        💡 <strong>Manga-Wissen:</strong> Japanische Mangas liest man von hinten nach vorne sowie von rechts nach links, da die traditionelle japanische Schrift von oben nach unten verläuft!
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -25,53 +25,41 @@
       <div class="cards-grid">
         <div class="card path-card">
           <h3>📜 Weg 1: Mit Haiku</h3>
-          <p>Nutze dein Gedicht über deine Stärken und Wünsche als Bauplan für dein Charakterdesign.</p>
+          <p>Nutze dein Gedicht über deine Stärken als Bauplan für deine Figur.</p>
         </div>
         <div class="card path-card">
           <h3>💡 Weg 2: Eigene Idee</h3>
-          <p>Starte frei mit eigenen Geschichten, Kräften, Hobbys oder Merkmalen im Kopf.</p>
+          <p>Starte frei mit eigenen Geschichten, Kräften oder Hobbys.</p>
         </div>
         <div class="card path-card">
           <h3>✏️ Weg 3: Direkt Üben</h3>
-          <p>Springe sofort zu den Zeichen-Vorlagen und fahre deine ersten Manga-Linien nach.</p>
+          <p>Springe sofort zum Zeichenfeld und wähle eine Vorlage.</p>
         </div>
       </div>
     </section>
 
     <section class="step-section">
       <h2>Schritt 1: Welches Gefühl bekommt dein Held?</h2>
-      <p>Überlege vor der ersten Skizze, welche Persönlichkeit dein Charakter ausstrahlen soll:</p>
       <ul>
-        <li><strong>Mutig & Feurig:</strong> Wilde, spitze Frisuren, ausdrucksstarker Blick.</li>
-        <li><strong>Sanft & Ruhig:</strong> Weiche, runde Augenformen, freundliches Lächeln.</li>
-        <li><strong>Schlau & Neugierig:</strong> Große, wache Augen, Brille oder Erkunder-Ausrüstung.</li>
+        <li><strong>Mutig & Feurig:</strong> Wilde Frisuren, spitzer Blick.</li>
+        <li><strong>Sanft & Ruhig:</strong> Weiche, runde Augenformen.</li>
+        <li><strong>Schlau & Neugierig:</strong> Große Augen, Brille oder Zubehör.</li>
       </ul>
-
       <div class="info-box knowledge">
-        💡 <strong>Manga-Wissen:</strong> Das Wort "Manga" (漫画) bedeutet übersetzt "spontanes Bild". Schon vor Hunderten von Jahren zeichneten japanische Dichter kleine Tuschebilder direkt neben ihre Haikus – das nannte man <em>Haiga</em>!
+        💡 <strong>Manga-Wissen:</strong> "Manga" bedeutet "spontanes Bild". Dichter zeichneten früher kleine Bilder direkt neben ihre Haikus – das nannte man <em>Haiga</em>!
       </div>
     </section>
 
-    <section class="step-section">
-     <!-- SCHRITT 2: GESICHTER & EMOTIONEN -->
-    <section class="step-section">
-      <h2>Schritt 2: Gesichter & Ausdrücke üben</h2>
-      <p>Klicke auf eine Vorlage, um das Zeichen-Tool zu starten:</p>
+    <section class="canvas-section" id="workshop">
+      <h2>🎨 Schritt 2 & 3: Die Zeichenwerkstatt</h2>
+      <p>Wähle eine Vorlage – sie erscheint blassgrau im Feld zum Nachfahren:</p>
       
       <div class="templates-grid">
-        <button class="btn-template" onclick="loadTemplate('https://upload.wikimedia.org/wikipedia/commons/d/dc/Manga_eyes.svg')">👁️ Manga-Augen</button>
-        <button class="btn-template" onclick="loadTemplate('https://upload.wikimedia.org/wikipedia/commons/1/1d/Anime_girl_head_base.png')">💇 Kopf-Form & Haare</button>
+        <button class="btn-template" onclick="drawGuide('augen')">👁️ Manga-Augen</button>
+        <button class="btn-template" onclick="drawGuide('gesicht')">👤 Gesichts-Form</button>
+        <button class="btn-template" onclick="drawGuide('steckbrief')">📋 Steckbrief-Vorlage</button>
       </div>
 
-      <div class="info-box tip">
-        ⭐ <strong>Pro-Tipp (Die 15-Minuten-Regel):</strong> Wärme deine Hand vor dem Zeichnen auf! Zeichne 10 große Kreise in die Luft. Lieber jeden Tag 15 Minuten üben als einmal im Monat stundenlang!
-      </div>
-    </section>
-      
-    <section class="canvas-section" id="workshop">
-      <h2>🎨 Deine Digitale Zeichenwerkstatt</h2>
-      <p>Fahre die blassgraue Vorlage nach oder nutze das Feld für freie Skizzen:</p>
-      
       <div class="canvas-container">
         <canvas id="paintCanvas" width="600" height="400"></canvas>
       </div>
@@ -79,20 +67,22 @@
       <div class="controls">
         <label>Farbe: <input type="color" id="colorPicker" value="#000000"></label>
         <label>Stiftbreite: <input type="range" id="lineWidth" min="1" max="10" value="3"></label>
-        <button id="clearBtn">Clear / Löschen</button>
+        <button id="clearBtn">❌ Feld leeren</button>
+        <button id="downloadBtn" class="btn-download">💾 Zeichnung herunterladen</button>
       </div>
 
       <div class="info-box tip">
-        ⭐ <strong>Der Papier-Trick:</strong> Kein Grafiktablet? Drehe die Display-Helligkeit hoch, lege ein normales Blatt Papier auf den Bildschirm und fahre die grau hinterlegten Linien mit Bleistift nach!
+        ⭐ <strong>Der Papier-Trick:</strong> Drehe die Bildschirm-Helligkeit ganz hoch, lege ein Blatt Papier auf das Display und fahre die grau hinterlegten Linien mit einem echten Bleistift nach!
       </div>
     </section>
 
     <section class="step-section">
-      <h2>Schritt 4: Hintergrund & Charakter-Steckbrief</h2>
-      <p>Erschaffe die Welt deines Helden (Perspektive, Speedlines) und lade dir deinen Steckbrief herunter.</p>
-      
+      <h2>Schritt 4: Werde zum Manga-Profi</h2>
+      <div class="info-box tip">
+        ⭐ <strong>Die 15-Minuten-Regel:</strong> Lieber jeden Tag 15 Minuten zeichnen als einmal im Monat stundenlang!
+      </div>
       <div class="info-box knowledge">
-        💡 <strong>Manga-Wissen:</strong> Japanische Mangas liest man von hinten nach vorne sowie von rechts nach links, da die traditionelle japanische Schrift von oben nach unten verläuft!
+        💡 <strong>Manga-Wissen:</strong> Japanische Mangas liest man von hinten nach vorne und von rechts nach links!
       </div>
     </section>
 
